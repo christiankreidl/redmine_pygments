@@ -14,7 +14,7 @@ module RedminePygments
 
         private
 
-        @@tags = /<\/?(div|pre)[^>]*>/
+        @@tags = /<\/?(div|pre)[^>]*>\n?/
       end
     end
   end
