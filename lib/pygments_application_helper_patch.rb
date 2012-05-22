@@ -3,13 +3,14 @@ module PygmentsApplicationHelperPatch
 
   included do
     class_eval do
-      alias_method_chain :syntax_highlight, :pygments
+      alias_method_chain :syntax_highlight_lines, :pygments
     end
   end
 
-  def syntax_highlight_with_pygments(name, content)
-    @code_css = 'line-code highlight'
-    syntax_highlight_without_pygments(name, content)
+  def syntax_highlight_lines_with_pygments(name, content)
+    lines = []
+    syntax_highlight(name, content).each_line {|line| lines << line.sub(/^.*$/, '<div class="highlight">\&</div>')}
+    lines
   end
 
 end

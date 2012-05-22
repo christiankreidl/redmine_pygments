@@ -5,12 +5,16 @@ module RedminePygments
 
       class << self
         def highlight_by_filename(text, filename)
-          ::Pygments.highlight(text, :filename => filename).sub(/^<div class="/, '\&line-code ')
+          ::Pygments.highlight(text, :filename => filename).gsub(@@tags, '')
         end
 
         def highlight_by_language(text, language)
-          ::Pygments.highlight(text, :lexer => language).sub(/^<div class="/, '\&line-code ')
+          ::Pygments.highlight(text, :lexer => language).gsub(@@tags, '')
         end
+
+        private
+
+        @@tags = /<\/?(div|pre)[^>]*>/
       end
     end
   end
