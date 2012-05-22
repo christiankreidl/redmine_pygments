@@ -11,6 +11,7 @@ module RedminePygments
         def highlight_by_language(text, language)
           ::Pygments.highlight(text, :lexer => language)
         end
+      end
     end
   end
 end

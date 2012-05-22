@@ -8,5 +8,6 @@ Redmine::Plugin.register :redmine_pygments do
 end
 
 require 'syntax_highlighting_pygments'
+require 'pygments_stylesheet_hook'
 
-Redmine::SyntaxHighlighting.highlighter = 'RedminePygments::SyntaxHighlighting::Pygments'
+Redmine::SyntaxHighlighting.highlighter = RedminePygments::SyntaxHighlighting::Pygments
