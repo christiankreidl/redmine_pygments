@@ -9,7 +9,7 @@ module PygmentsApplicationHelperPatch
 
   def syntax_highlight_lines_with_pygments(name, content)
     lines = []
-    syntax_highlight(name, content).each_line {|line| lines << line.sub(/^.*$/, '<div class="highlight">\&</div>')}
+    syntax_highlight(name, content).each_line {|line| lines << "<div class=\"highlight\">#{line}</div>"}
     lines
   end
 

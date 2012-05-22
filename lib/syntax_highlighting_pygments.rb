@@ -9,7 +9,8 @@ module RedminePygments
         end
 
         def highlight_by_language(text, language)
-          ::Pygments.highlight(text, :lexer => language, :options => {:linenos => true})
+          content = ::Pygments.highlight(text, :lexer => language, :options => {:nowrap => true})
+          "<div class=\"highlight\">#{content}</div>"
         end
       end
     end
