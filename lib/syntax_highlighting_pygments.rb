@@ -5,16 +5,12 @@ module RedminePygments
 
       class << self
         def highlight_by_filename(text, filename)
-          ::Pygments.highlight(text, :filename => filename).gsub(@@tags, '')
+          ::Pygments.highlight(text, :filename => filename, :options => {:nowrap => true})
         end
 
         def highlight_by_language(text, language)
-          ::Pygments.highlight(text, :lexer => language).gsub(@@tags, '')
+          ::Pygments.highlight(text, :lexer => language, :options => {:linenos => true})
         end
-
-        private
-
-        @@tags = /<\/?(div|pre)[^>]*>\n?/
       end
     end
   end
