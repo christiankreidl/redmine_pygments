@@ -14,8 +14,8 @@ Redmine::Plugin.register :redmine_pygments do
   author 'ichizok'
   description 'This is a plugin for Redmine'
   version '0.0.1'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
+  url 'https://bitbucket.org/ichizok/redmine_pygments'
+  author_url 'https://bitbucket.org/ichizok'
 end
 
 Redmine::SyntaxHighlighting.highlighter = RedminePygments::SyntaxHighlighting::Pygments
