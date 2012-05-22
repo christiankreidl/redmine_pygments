@@ -7,9 +7,9 @@ module PygmentsApplicationHelperPatch
     end
   end
 
-  def syntax_highligh_with_pygments(name, content)
+  def syntax_highlight_with_pygments(name, content)
     @code_css = 'line-code highlight'
-    syntax_highligh_with_pygments(name, content)
+    syntax_highlight_without_pygments(name, content)
   end
 
 end
