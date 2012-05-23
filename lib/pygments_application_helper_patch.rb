@@ -12,5 +12,4 @@ module PygmentsApplicationHelperPatch
     syntax_highlight(name, content).each_line {|line| lines << "<div class=\"highlight\">#{line}</div>"}
     lines
   end
-
 end

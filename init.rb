@@ -1,6 +1,5 @@
 require 'redmine'
 
-require 'pygments_application_helper_patch'
 require 'pygments_stylesheet_hook'
 require 'syntax_highlighting_pygments'
 
@@ -16,6 +15,7 @@ Redmine::Plugin.register :redmine_pygments do
   version '0.0.1'
   url 'https://bitbucket.org/ichizok/redmine_pygments'
   author_url 'https://bitbucket.org/ichizok'
+  requires_redmine :version_or_higher => '2.0.0'
 end
 
 Redmine::SyntaxHighlighting.highlighter = RedminePygments::SyntaxHighlighting::Pygments
