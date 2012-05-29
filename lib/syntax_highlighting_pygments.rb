@@ -9,7 +9,9 @@ module RedminePygments
         end
 
         def highlight_by_language(text, language)
-          content = ::Pygments.highlight(text, :lexer => language, :options => {:nowrap => true})
+          opts = {:options => {:nowrap => true}}
+          opts[:lexer] = language if ::Pygments::Lexer.find(language)
+          content = ::Pygments.highlight(text, opts)
           lines = []
           i = 0
           index = "%##{(content.count("\n") + (/[^\n]\z/ =~ content ? 1 : 0)).to_s.size}d"
