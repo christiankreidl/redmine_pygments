@@ -14,11 +14,11 @@ module RedminePygments
           content = ::Pygments.highlight(text, opts)
           lines = []
           i = 0
-          index = "%##{(content.count("\n") + (/[^\n]\z/ =~ content ? 1 : 0)).to_s.size}d"
+          index = "%##{content.count("\n").to_s.size}d"
           content.each_line { |line|
             lines << "<span class=\"line-numbers\">#{index % (i += 1)}</span>#{line}"
           }
-          "<div class=\"highlight\">#{lines.join}</div>"
+          "<div class=\"highlight\">#{lines.join[0 .. -2]}</div>"
         end
       end
     end

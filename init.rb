@@ -5,7 +5,7 @@ require 'syntax_highlighting_pygments'
 
 Rails.configuration.to_prepare do
   require_dependency 'application_helper'
-  ApplicationHelper.send(:include, PygmentsApplicationHelperPatch) unless ApplicationHelper < PygmentsApplicationHelperPatch
+  ApplicationHelper.send(:include, PygmentsApplicationHelperPatch)
 end
 
 Redmine::Plugin.register :redmine_pygments do
