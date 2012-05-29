@@ -11,10 +11,10 @@ module RedminePygments
         def highlight_by_language(text, language)
           content = ::Pygments.highlight(text, :lexer => language, :options => {:nowrap => true})
           lines = []
-          content.each_line { |line| lines << line }
-          index = "%##{lines.size.to_s.size}d"
-          lines.each_with_index { |line, i|
-            lines[i] = "<span class=\"line-numbers\">#{index % (i + 1)}</span>#{line}"
+          i = 0
+          index = "%##{(content.count("\n") + (/[^\n]\z/ =~ content ? 1 : 0)).to_s.size}d"
+          content.each_line { |line|
+            lines << "<span class=\"line-numbers\">#{index % (i += 1)}</span>#{line}"
           }
           "<div class=\"highlight\">#{lines.join}</div>"
         end
