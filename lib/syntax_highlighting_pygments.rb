@@ -5,11 +5,11 @@ module RedminePygments
 
       class << self
         def highlight_by_filename(text, filename)
-          ::Pygments.highlight(text, :filename => filename, :options => {:nowrap => true})
+          ::Pygments.highlight(text, :filename => filename, :options => {:encoding => 'utf-8', :nowrap => true})
         end
 
         def highlight_by_language(text, language)
-          opts = {:options => {:nowrap => true}}
+          opts = {:options => {:encoding => 'utf-8', :nowrap => true}}
           opts[:lexer] = language if ::Pygments::Lexer.find(language)
           hltext = ::Pygments.highlight(text, opts)
           lines = []
