@@ -1,4 +1,6 @@
-module RedminePygments
+require 'redmine/syntax_highlighting'
+
+module Redmine
   module SyntaxHighlighting
     module Pygments
       require 'pygments'
@@ -23,4 +25,6 @@ module RedminePygments
       end
     end
   end
+
+  SyntaxHighlighting.highlighter = 'Pygments'
 end

@@ -17,5 +17,3 @@ Redmine::Plugin.register :redmine_pygments do
   author_url 'https://bitbucket.org/ichizok'
   requires_redmine :version_or_higher => '2.0.0'
 end
-
-Redmine::SyntaxHighlighting.highlighter = RedminePygments::SyntaxHighlighting::Pygments
