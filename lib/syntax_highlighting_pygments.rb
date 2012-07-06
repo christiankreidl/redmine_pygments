@@ -12,7 +12,8 @@ module Redmine
 
         def highlight_by_language(text, language)
           opts = {:options => {:encoding => 'utf-8', :nowrap => true}}
-          opts[:lexer] = language if ::Pygments::Lexer.find(language)
+          lexer = ::Pygments::Lexer.find(language)
+          opts[:lexer] = lexer[:aliases].first if lexer
           hltext = ::Pygments.highlight(text, opts)
           lines = []
           i = 0
