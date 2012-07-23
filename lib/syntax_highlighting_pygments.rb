@@ -21,7 +21,7 @@ module Redmine
           hltext.each_line do |line|
             lines << "<span class=\"line-numbers\">#{idx % (i += 1)}</span>#{line}"
           end
-          "<div class=\"highlight\">#{lines.join.rstrip}</div>"
+          "<div class=\"highlight\">#{lines.join.chomp}</div>"
         end
       end
     end
