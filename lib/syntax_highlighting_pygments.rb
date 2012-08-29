@@ -7,7 +7,12 @@ module Redmine
 
       class << self
         def highlight_by_filename(text, filename)
-          ::Pygments.highlight(text, :filename => filename, :options => {:encoding => 'utf-8', :nowrap => true})
+          opts = {:filename => filename, :options => {:encoding => 'utf-8', :nowrap => true}}
+          begin
+            ::Pygments.highlight(text, opts)
+          rescue
+            opts.delete(:filename) ? retry : raise
+          end
         end
 
         def highlight_by_language(text, language)
