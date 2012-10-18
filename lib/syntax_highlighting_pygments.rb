@@ -11,22 +11,21 @@ module Redmine
           begin
             ::Pygments.highlight(text, opts)
           rescue
-            opts.delete(:filename) ? retry : raise
+            ERB::Util.h(text)
           end
         end
 
         def highlight_by_language(text, language)
-          opts = {:options => {:encoding => 'utf-8', :nowrap => true}}
+          opts = {:options => {:encoding => 'utf-8', :linenos => 'inline'}}
           lexer = ::Pygments::Lexer.find(language)
           opts[:lexer] = lexer[:aliases].first if lexer
-          hltext = ::Pygments.highlight(text, opts)
-          lines = []
-          i = 0
-          idx = "%##{hltext.count("\n").to_s.size}d"
-          hltext.each_line do |line|
-            lines << "<span class=\"line-numbers\">#{idx % (i += 1)}</span>#{line}"
+          begin
+            ::Pygments.highlight(text, opts).
+              sub(%r{\A(<div class="highlight">)<pre>\n*}, '\1').
+              sub(%r{\n*</pre>(</div>)\Z}, '\1')
+          rescue
+            ERB::Util.h(text)
           end
-          "<div class=\"highlight\">#{lines.join.chomp}</div>"
         end
       end
     end
