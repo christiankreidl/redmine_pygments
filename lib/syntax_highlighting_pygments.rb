@@ -8,10 +8,8 @@ module Redmine
       class << self
         def highlight_by_filename(text, filename)
           begin
-            opts = {:options => {:encoding => 'utf-8', :nowrap => true}}
             lexer = ::Pygments.lexer_name_for(:filename => filename)
-            opts[:lexer] = lexer if lexer
-            ::Pygments.highlight(text, opts)
+            highlight_by_lexer(text, lexer)
           rescue
             ERB::Util.h(text)
           end
@@ -19,15 +17,19 @@ module Redmine
 
         def highlight_by_language(text, language)
           begin
-            opts = {:options => {:encoding => 'utf-8', :linenos => 'inline'}}
             lexer = ::Pygments::Lexer.find(language)
-            opts[:lexer] = lexer[:aliases].first if lexer
-            ::Pygments.highlight(text, opts).
-              sub(%r{\A(<div class="highlight">)<pre>\n*}, '\1').
-              sub(%r{\n*</pre>(</div>)\Z}, '\1')
+            highlight_by_lexer(text, (lexer[:aliases].first if lexer))
           rescue
             ERB::Util.h(text)
           end
+        end
+
+        private
+
+        def highlight_by_lexer(text, lexer)
+          opts = {:options => {:encoding => 'utf-8', :nowrap => true}}
+          opts[:lexer] = lexer if lexer
+          ::Pygments.highlight(text, opts)
         end
       end
     end
