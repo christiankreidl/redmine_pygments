@@ -88,8 +88,9 @@ table.embedded-code.syntaxhl tr td { height: 0.4em; background: #fafafa;}
 table.embedded-code.syntaxhl th.line-num {
     border: 1px solid #e2e2e2;
     text-align: right;
-    width: 3%;
-    padding: 0 3px 0 0;
+    width: 44px;
+    min-width: 44px;
+    padding: 0 4px 0 0;
     color: #999;
     user-select: none;
     -moz-user-select: none;
@@ -110,6 +111,7 @@ table.embedded-code.syntaxhl td.line-code pre {
     border: 0px solid #e2e2e2;
     margin: 0px;
     padding: 0px;
-    white-space: pre-wrap;
+    white-space: pre;
+    overflow: auto;
     font-family:"Liberation Mono", Courier, monospace; font-size:12px;
 }
