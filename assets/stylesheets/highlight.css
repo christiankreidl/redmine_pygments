@@ -71,46 +71,37 @@
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
 
-table.highlighttable.syntaxhl {
+table.highlighttable {
     margin: 1em 1em 1em 1.6em;
     border: 2px solid #eee;
     border-collapse: collapse;
     width: 97%;
     background-color: #fafafa;
+    table-layout: fixed;
 }
-table.highlighttable.syntaxhl tbody {
-    font-family:"Liberation Mono", Courier, monospace;
-    font-size:12px;
+table.highlighttable tbody {
+    font-family: "Menlo", "Liberation Mono", "Consolas", "Courier New", "andale mono", "lucida console", monospace;
+    font-size: 12px;
 }
-table.highlighttable.syntaxhl th { border: 1px solid #e2e2e2; background-color: #eee; }
-table.highlighttable.syntaxhl tr th { text-align:center; }
-table.highlighttable.syntaxhl tr td { height: 0.4em; background: #fafafa;}
-table.highlighttable.syntaxhl th.line-num {
-    border: 1px solid #e2e2e2;
+table.highlighttable td.linenos {
+    padding: 1px 4px 0 10px;
+    background: #eee;
+    width: 20px;
+}
+table.highlighttable td.linenos pre {
+    background: #eee;
     text-align: right;
-    width: 44px;
-    min-width: 44px;
-    padding: 0 4px 0 0;
-    color: #999;
-    user-select: none;
-    -moz-user-select: none;
-    -o-user-select: none;
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    font-weight:normal;
 }
-table.highlighttable.syntaxhl th.line-num a {
-    text-decoration: none;
-    color: inherit;
-}
-table.highlighttable.syntaxhl td.line-code {
+table.highlighttable td.code {
     border: 0px solid #e2e2e2;
-    padding: 0 0 0 8px;
+    padding: 0 8px;
+    background: #fafafa;
 }
-table.highlighttable.syntaxhl td.line-code pre {
+table.highlighttable tr td pre {
     border: 0px solid #e2e2e2;
     margin: 0px;
     padding: 0px;
     white-space: pre;
-    font-family:"Liberation Mono", Courier, monospace; font-size:12px;
+    font-size: 12px !important;
+    line-height: 16px !important;
 }
