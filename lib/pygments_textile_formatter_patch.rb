@@ -13,9 +13,9 @@ module PygmentsTextileFormatterPatch
       text.gsub!(%r{<redpre#(\d+)>(?:\s*<redpre#(\d+)></code>\s*)?</pre>}) do
         if $2
           content = @pre_list[$2.to_i]
-          if content.match(%r{<code\s+class="(\w+)">\s?(.+)}m)
+          if content.match(%r{<code\s+class="([-\w]+)">\s?(.+)}m)
             i = 0
-            lines = [%{<div class="autoscroll"><table class="embedded-code #{$1} syntaxhl"><tbody>\n}]
+            lines = [%{<div class="autoscroll"><table class="highlighttable #{$1} syntaxhl"><tbody>\n}]
             hltext = Redmine::SyntaxHighlighting.highlight_by_language($2, $1)
             hltext.each_line do |line|
               i += 1
@@ -24,6 +24,8 @@ module PygmentsTextileFormatterPatch
             end
             lines << %{</tbody></table></div>\n}
             content = lines.join('')
+          else
+            content = "<pre>" + content + "</code></pre>"
           end
         else
           content = @pre_list[$1.to_i] + "</pre>"
