@@ -15,7 +15,7 @@ Redmine::Plugin.register :redmine_pygments do
   name 'Redmine Pygments plugin'
   author 'ichizok'
   description 'Syntax-highlighter powered by Pygments'
-  version '0.1.1'
+  version '0.1.2'
   url 'https://bitbucket.org/ichizok/redmine_pygments'
   author_url 'https://bitbucket.org/ichizok'
   requires_redmine :version_or_higher => '2.0.0'
