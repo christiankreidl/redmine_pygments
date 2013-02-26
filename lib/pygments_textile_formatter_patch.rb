@@ -10,7 +10,7 @@ module PygmentsTextileFormatterPatch
   def smooth_offtags_with_pygments(text)
     unless @pre_list.empty?
       ## replace <pre> content
-      text.gsub!(%r{<redpre#(\d+)>(?:\s*<redpre#(\d+)></code>\s*)?</pre>}) do
+      text.gsub!(%r{<redpre#(\d+)>(?:\s*<redpre#(\d+)></code>\s*)?(</(?:\w+)>)}) do
         if $2
           num = $2
           content = @pre_list[$2.to_i]
@@ -25,7 +25,7 @@ module PygmentsTextileFormatterPatch
             content = "<pre>" + content + "</code></pre>"
           end
         else
-          content = @pre_list[$1.to_i] + "</pre>"
+          content = @pre_list[$1.to_i] + $3
         end
         content
       end
