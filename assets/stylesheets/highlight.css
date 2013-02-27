@@ -77,16 +77,14 @@ table.highlighttable {
     border-collapse: collapse;
     width: 97%;
     background-color: #fafafa;
-    table-layout: fixed;
 }
 table.highlighttable tbody {
     font-family: "Menlo", "Liberation Mono", "Consolas", "Courier New", "andale mono", "lucida console", monospace;
     font-size: 12px;
 }
 table.highlighttable td.linenos {
-    padding: 1px 4px 0 10px;
+    padding: 4px 4px 4px 8px;
     background: #eee;
-    width: 20px;
 }
 table.highlighttable td.linenos pre {
     background: #eee;
