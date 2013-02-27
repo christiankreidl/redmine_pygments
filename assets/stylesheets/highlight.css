@@ -85,6 +85,7 @@ table.highlighttable tbody {
 table.highlighttable td.linenos {
     padding: 4px 4px 4px 8px;
     background: #eee;
+    width: 14px;
 }
 table.highlighttable td.linenos pre {
     background: #eee;
