@@ -19,7 +19,6 @@ module PygmentsTextileFormatterPatch
             content = hltext.sub(%r{(?:<pre>)([\s\d]+)(?=</pre>)}) do |nos|
               nos.gsub(%r{ *(\d+)}, %{<span id="C#{num}-L\\1" rel="#C#{num}-L\\1">\\&</span>})
             end
-            content += '>' unless content[-1] == '>' # pygments.rb bug?
             content = '<div class="autoscroll">' + content + '</div>'
           else
             content = "<pre>" + content + "</code></pre>"
