@@ -7,6 +7,11 @@ Rails.configuration.to_prepare do
 
   require_dependency 'redmine/wiki_formatting/textile/formatter'
   Redmine::WikiFormatting::Textile::Formatter.send(:include, PygmentsTextileFormatterPatch)
+
+  if Redmine::VERSION::MAJOR > 2 || (Redmine::VERSION::MAJOR == 2 && Redmine::VERSION::MINOR >= 5)
+    require_dependency 'redmine/wiki_formatting/markdown/formatter'
+    Redmine::WikiFormatting::Markdown::HTML.send(:include, PygmentsMarkdownFormatterPatch)
+  end
 end
 
 Redmine::Plugin.register :redmine_pygments do
