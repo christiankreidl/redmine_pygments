@@ -9,4 +9,4 @@ This plugin provides for a syntax-highlighting powered by pygments.
 
 ## License
 
-MIT: http://ichizok.mit-license.org
+MIT: http://ichizok.mit-license.org/2012
