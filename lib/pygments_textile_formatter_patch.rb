@@ -3,11 +3,13 @@ module PygmentsTextileFormatterPatch
 
   included do
     class_eval do
-      alias_method_chain :smooth_offtags, :pygments
+      prepend InstanceMethods
     end
   end
 
-  def smooth_offtags_with_pygments(text)
+  module InstanceMethods
+
+  def smooth_offtags(text)
     unless @pre_list.empty?
       ## replace <pre> content
       text.gsub!(%r{<redpre#(\d+)>(?:\s*<redpre#(\d+)></code>\s*)?(</(?:\w+)>)}) do
@@ -30,4 +32,7 @@ module PygmentsTextileFormatterPatch
       end
     end
   end
+
+  end
 end
+
