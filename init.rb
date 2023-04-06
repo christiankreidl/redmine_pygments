@@ -1,5 +1,3 @@
-require 'redmine'
-require 'redmine/syntax_highlighting/pygments'
 
 Rails.configuration.to_prepare do
   require_dependency 'application_helper'
